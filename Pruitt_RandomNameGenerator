@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+            <script type='text/javascript'> 
+
+                function randomName(maxValue){
+                return Math.floor(Math.random() * maxValue);
+            }
+            
+            var firstName = [];
+            firstName.push('Jared');
+            firstName.push('Lindsey');
+            firstName.push('Danielle');
+            firstName.push('Heather');
+            firstName.push('Madilyn');
+            firstName.push('Natalie');
+
+            var lastName = [];
+            lastName.push('Smith');
+            lastName.push('Johnson');
+            lastName.push('Potter');
+            lastName.push('Riley');
+            lastName.push('Penny');
+            lastName.push('Harless');
+
+            var firstNameIndex = randomName(firstName.length);
+            var lastNameIndex = randomName(lastName.length);
+
+            console.log(firstName[firstNameIndex]);
+            console.log(lastName[lastNameIndex]);
+
+            </script>
+
+    </head>
+
+    <body>
+        <h1>Random Name Generator</h1>
+    </body>
+
+</html>
