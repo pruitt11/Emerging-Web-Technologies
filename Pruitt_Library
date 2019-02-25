@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>The Library</title>
+    </head>
+
+    <script type="text/javascript">
+
+        class Item{
+
+        }
+        
+        class LibraryItem {
+
+            constructor(itemType,title){
+            this.itemType = itemType;
+            
+                this.title = title;
+            }
+            }
+            
+            class Library{
+            constructor(){
+            this.items = [];
+            }
+            }
+
+            add(){
+                // get a pointer to the html form that has the id of libraryForm
+            var frmItem= document.querySelector('#libraryForm');
+                //pass that form pointer into the buildItem function
+                //and get back an object with the items properties
+                //extracted from the form
+            var item = this.buildItem(frmItem);
+                //add the item to the library of items
+            this.items.push(item);
+            console.log(this.items);
+            console.table(this.items);
+            this.render();
+            return false;
+            }
+
+            buildItem(frm){
+                var itemTypes = frm.querySelector('#selItemType').selectedOptions;
+                return new LibraryItem(itemTypes[0].value,frm.title.value);
+                
+            }
+
+            render(){
+            var ul = document.querySelector('#LibraryItems');
+            ul.innerHTML = null;
+            this.itemsforEach(function(sa){
+            var li = document.createElement('li');
+            li.innerText = `${sa.itemType} ${sa.Title}`;
+            ul.appendChild(li);
+            });
+
+            renderItem(item){
+
+            }
+        }
+
+        var brisLibrary = new Library();
+
+    </script>
+      
+    <body>
+
+        <h1>Our Library</h1>
+
+            <form id="libraryForm">
+            <label for="selItemType"> Item Type </label>
+
+                <select name="itemType" id="selItemType">
+                    <option value="book">Book</option>
+                    <option value="movie">Movie</option>
+                    <option value="game">Game</option>
+                    <option value="music">Music</option>
+                </select>
+                
+            <label for="txtTitle">Title</label>
+            <input type="text" name="title" id="txtTitle">
+            <input type="submit" name="btnAdd" value="Add"
+                onClick="return brisLibrary.add()">
+            
+            </input>
+            </form>
+            <ul id="LibraryItems">
+            </ul>
+    </body>
+
+</html>
